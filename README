@@ -1,0 +1,21 @@
+cmpc driver:
+
+OMAP 35xx control module pad configuration (aka cmpc) driver
+Derived from the mux driver code by Scott Ellis.
+This driver can set configure the control module configuration register
+on the OMAP 35xx processor.  This allow setting the the mode (from mode 0 
+to mode 7 for individual pins.
+
+Compiling:
+make V=1 -f Makefile ARCH=arm KERNELDIR=/home/fagius/git/sakoman/linux-omap-2.6_head RCH=arm CROSS_COMPILE=/usr/local/angstrom/arm/bin/arm-angstrom-linux-gnueabi-
+
+Installing:
+
+insmod cmpc.ko
+
+usage:
+
+# set pin 177 to mode 4 (gpio)
+echo 177:4 > /dev/cmpc
+# set pin 144 to mode 2 (pwm_evt)
+echo 144:2 > /dev/cmpc
