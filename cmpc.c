@@ -250,6 +250,8 @@ static ssize_t cmpc_write(struct file *filp, const char __user *buff,
                       printk(KERN_ERR PREFIX "gpio_request failed for pin %ld \n", pin);
                   }
                   gpio_direction_output(pin, 0);
+                  // free the pin
+                  gpio_free(pin);
                 }
                 // read the new pin state
 		reg = ioread16(base + gp_map[pin]);
